@@ -3,9 +3,9 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'germanywestcentral'
-  ''
+  'austriaeast'
 ]
-param parEnableTelemetry = true
+param parEnableTelemetry = false
 
 param sandboxConfig = {
   createOrUpdateManagementGroup: true

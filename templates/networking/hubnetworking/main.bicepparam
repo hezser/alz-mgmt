@@ -3,7 +3,7 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'germanywestcentral'
-  ''
+  'austriaeast'
 ]
 param parGlobalResourceLock = {
   name: 'GlobalResourceLock'
@@ -11,7 +11,7 @@ param parGlobalResourceLock = {
   notes: 'This lock was created by the ALZ Bicep Accelerator.'
 }
 param parTags = {}
-param parEnableTelemetry = true
+param parEnableTelemetry = false
 
 // Resource Group Parameters
 param parHubNetworkingResourceGroupNamePrefix = 'rg-alz-conn'
@@ -24,7 +24,7 @@ param hubNetworks = [
     name: 'vnet-alz-${parLocations[0]}'
     location: parLocations[0]
     addressPrefixes: [
-      '10.0.0.0/22'
+      '172.17.0.0/22'
     ]
     deployPeering: true
     dnsServers: []
@@ -40,35 +40,35 @@ param hubNetworks = [
     subnets: [
       {
         name: 'AzureBastionSubnet'
-        addressPrefix: '10.0.0.64/26'
+        addressPrefix: '172.17.0.64/26'
       }
       {
         name: 'GatewaySubnet'
-        addressPrefix: '10.0.0.128/27'
+        addressPrefix: '172.17.0.128/27'
       }
       {
         name: 'AzureFirewallSubnet'
-        addressPrefix: '10.0.0.0/26'
+        addressPrefix: '172.17.0.0/26'
       }
       {
         name: 'AzureFirewallManagementSubnet'
-        addressPrefix: '10.0.0.192/26'
+        addressPrefix: '172.17.0.192/26'
       }
       {
         name: 'DNSPrivateResolverInboundSubnet'
-        addressPrefix: '10.0.0.160/28'
+        addressPrefix: '172.17.0.160/28'
         delegation: 'Microsoft.Network/dnsResolvers'
       }
       {
         name: 'DNSPrivateResolverOutboundSubnet'
-        addressPrefix: '10.0.0.176/28'
+        addressPrefix: '172.17.0.176/28'
         delegation: 'Microsoft.Network/dnsResolvers'
       }
     ]
     azureFirewallSettings: {
       deployAzureFirewall: true
       azureFirewallName: 'afw-alz-${parLocations[0]}'
-      azureSkuTier: 'Standard'
+      azureSkuTier: 'Basic'
       publicIPAddressObject: {
         name: 'pip-afw-alz-${parLocations[0]}'
       }
@@ -79,10 +79,10 @@ param hubNetworks = [
     bastionHostSettings: {
       deployBastion: true
       bastionHostSettingsName: 'bas-alz-${parLocations[0]}'
-      skuName: 'Standard'
+      skuName: 'Developer'
     }
     vpnGatewaySettings: {
-      deployVpnGateway: true
+      deployVpnGateway: false
       name: 'vgw-alz-${parLocations[0]}'
       skuName: 'VpnGw1AZ'
       vpnMode: 'activeActiveBgp'
@@ -90,7 +90,7 @@ param hubNetworks = [
       asn: 65515
     }
     expressRouteGatewaySettings: {
-      deployExpressRouteGateway: true
+      deployExpressRouteGateway: falase
       name: 'ergw-alz-${parLocations[0]}'
     }
     privateDnsSettings: {
@@ -100,7 +100,7 @@ param hubNetworks = [
       privateDnsZones: []
     }
     ddosProtectionPlanSettings: {
-      deployDdosProtectionPlan: true
+      deployDdosProtectionPlan: false
       name: 'ddos-alz-${parLocations[0]}'
     }
   }
@@ -108,7 +108,7 @@ param hubNetworks = [
     name: 'vnet-alz-${parLocations[1]}'
     location: parLocations[1]
     addressPrefixes: [
-      '10.1.0.0/22'
+      '172.18.0.0/22'
     ]
     deployPeering: true
     dnsServers: []
@@ -124,35 +124,35 @@ param hubNetworks = [
     subnets: [
       {
         name: 'AzureBastionSubnet'
-        addressPrefix: '10.1.0.64/26'
+        addressPrefix: '172.18.0.64/26'
       }
       {
         name: 'GatewaySubnet'
-        addressPrefix: '10.1.0.128/27'
+        addressPrefix: '172.18.0.128/27'
       }
       {
         name: 'AzureFirewallSubnet'
-        addressPrefix: '10.1.0.0/26'
+        addressPrefix: '172.18.0.0/26'
       }
       {
         name: 'AzureFirewallManagementSubnet'
-        addressPrefix: '10.1.0.192/26'
+        addressPrefix: '172.18.0.192/26'
       }
       {
         name: 'DNSPrivateResolverInboundSubnet'
-        addressPrefix: '10.1.0.160/28'
+        addressPrefix: '172.18.0.160/28'
         delegation: 'Microsoft.Network/dnsResolvers'
       }
       {
         name: 'DNSPrivateResolverOutboundSubnet'
-        addressPrefix: '10.1.0.176/28'
+        addressPrefix: '172.18.0.176/28'
         delegation: 'Microsoft.Network/dnsResolvers'
       }
     ]
     azureFirewallSettings: {
-      deployAzureFirewall: true
+      deployAzureFirewall: false
       azureFirewallName: 'afw-alz-${parLocations[1]}'
-      azureSkuTier: 'Standard'
+      azureSkuTier: 'Basic'
       publicIPAddressObject: {
         name: 'pip-afw-alz-${parLocations[1]}'
       }
@@ -161,12 +161,12 @@ param hubNetworks = [
       }
     }
     bastionHostSettings: {
-      deployBastion: true
+      deployBastion: false
       bastionHostSettingsName: 'bas-alz-${parLocations[1]}'
-      skuName: 'Standard'
+      skuName: 'Developer'
     }
     vpnGatewaySettings: {
-      deployVpnGateway: true
+      deployVpnGateway: false
       name: 'vgw-alz-${parLocations[1]}'
       skuName: 'VpnGw1AZ'
       vpnMode: 'activeActiveBgp'
@@ -174,12 +174,12 @@ param hubNetworks = [
       asn: 65515
     }
     expressRouteGatewaySettings: {
-      deployExpressRouteGateway: true
+      deployExpressRouteGateway: false
       name: 'ergw-alz-${parLocations[1]}'
     }
     privateDnsSettings: {
-      deployPrivateDnsZones: true
-      deployDnsPrivateResolver: true
+      deployPrivateDnsZones: false
+      deployDnsPrivateResolver: false
       privateDnsResolverName: 'dnspr-alz-${parLocations[1]}'
       privateDnsZones: [
         'privatelink.{regionName}.azurecontainerapps.io'

@@ -3,7 +3,7 @@ using 'main.bicep'
 // General Parameters
 param parLocations = [
   'germanywestcentral'
-  ''
+  'austriaeast'
 ]
 param parGlobalResourceLock = {
   name: 'GlobalResourceLock'
@@ -11,7 +11,7 @@ param parGlobalResourceLock = {
   notes: 'This lock was created by the ALZ Bicep Accelerator.'
 }
 param parTags = {}
-param parEnableTelemetry = true
+param parEnableTelemetry = false
 
 // Resource Group Parameters
 param parMgmtLoggingResourceGroup = 'rg-alz-logging-${parLocations[0]}'
@@ -22,7 +22,7 @@ param parAutomationAccountLocation = parLocations[0]
 param parDeployAutomationAccount = false
 param parAutomationAccountUseManagedIdentity = true
 param parAutomationAccountPublicNetworkAccess = true
-param parAutomationAccountSku = 'Basic'
+param parAutomationAccountSku = 'Free'
 
 // Log Analytics Workspace Parameters
 param parLogAnalyticsWorkspaceName = 'law-alz-${parLocations[0]}'
