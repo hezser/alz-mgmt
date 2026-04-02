@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'germanywestcentral'
-  'austriaeast'
 ]
 param parEnableTelemetry = false
 
