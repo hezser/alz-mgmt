@@ -29,22 +29,22 @@ param intRootConfig = {
 
 // Only specify the parameters you want to override - others will use defaults from JSON files
 param parPolicyAssignmentParameterOverrides = {
-  // 'Deploy-MDFC-Config-H224': {
-  //   parameters: {
-  //     logAnalytics: {
-  //       value: '/subscriptions/64d8cceb-3611-43e5-a168-23dbb65690e6/resourcegroups/rg-alz-logging-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
-  //     }
-  //     emailSecurityContact: {
-  //       value: 'rene.hezser@microsoft.com'
-  //     }
-  //     ascExportResourceGroupName: {
-  //       value: 'rg-alz-asc-${parLocations[0]}'
-  //     }
-  //     ascExportResourceGroupLocation: {
-  //       value: parLocations[0]
-  //     }
-  //   }
-  // }
+  'Deploy-MDFC-Config-H224': {
+    parameters: {
+      logAnalytics: {
+        value: '/subscriptions/64d8cceb-3611-43e5-a168-23dbb65690e6/resourcegroups/rg-alz-logging-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
+      }
+      emailSecurityContact: {
+        value: 'rene.hezser@microsoft.com'
+      }
+      ascExportResourceGroupName: {
+        value: 'rg-alz-asc-${parLocations[0]}'
+      }
+      ascExportResourceGroupLocation: {
+        value: parLocations[0]
+      }
+    }
+  }
   'Deploy-AzActivity-Log': {
     parameters: {
       logAnalytics: {

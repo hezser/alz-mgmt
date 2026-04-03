@@ -13,7 +13,9 @@ param landingZonesConfig = {
   managementGroupIntermediateRootName: 'rhalz'
   managementGroupDisplayName: 'rh-Landing Zones'
   managementGroupDoNotEnforcePolicyAssignments: []
-  managementGroupExcludedPolicyAssignments: []
+  managementGroupExcludedPolicyAssignments: [
+    'Enable-DDoS-VNET'
+  ]
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []
   customerPolicyDefs: []

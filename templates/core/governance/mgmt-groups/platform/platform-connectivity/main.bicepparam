@@ -13,7 +13,9 @@ param platformConnectivityConfig = {
   managementGroupIntermediateRootName: 'rhalz'
   managementGroupDisplayName: 'rh-Connectivity'
   managementGroupDoNotEnforcePolicyAssignments: []
-  managementGroupExcludedPolicyAssignments: []
+  managementGroupExcludedPolicyAssignments: [
+    'Enable-DDoS-VNET'
+  ]
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []
   customerPolicyDefs: []
