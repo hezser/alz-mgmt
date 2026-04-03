@@ -27,15 +27,15 @@ param hubNetworks = [
     ]
     deployPeering: true
     dnsServers: []
-    peeringSettings: [
-      {
-        remoteVirtualNetworkName: 'vnet-alz-${parLocations[1]}'
-        allowForwardedTraffic: true
-        allowGatewayTransit: false
-        allowVirtualNetworkAccess: true
-        useRemoteGateways: false
-      }
-    ]
+    // peeringSettings: [
+    //   {
+    //     remoteVirtualNetworkName: 'vnet-alz-${parLocations[1]}'
+    //     allowForwardedTraffic: true
+    //     allowGatewayTransit: false
+    //     allowVirtualNetworkAccess: true
+    //     useRemoteGateways: false
+    //   }
+    // ]
     subnets: [
       {
         name: 'AzureBastionSubnet'
