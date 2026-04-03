@@ -6,7 +6,7 @@ param parLocations = [
 ]
 param parGlobalResourceLock = {
   name: 'GlobalResourceLock'
-  kind: 'None'
+  kind: 'CanNotDelete'
   notes: 'This lock was created by the ALZ Bicep Accelerator.'
 }
 param parTags = {}
